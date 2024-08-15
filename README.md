@@ -40,7 +40,7 @@ El objetivo de RideNShare es proporcionar a los ciclistas una plataforma que no 
 
 Los mockups de las pantallas principales del proyecto están disponibles en el siguiente enlace:
 
-[Ver Mockups]([https://www.figma.com/design/qiUq9XTLhZme5YOusIgsjf/Mockups-Ride'N'Share?node-id=18-47&t=hVNRs5D9tMyc8ShS-1](https://www.figma.com/design/GLbvWeRTKSNKtwXX20qjfQ/Mockups-Ride'N'Share?node-id=0-1&t=2fh6s3URZuUNrWaw-1))
+[Ver Mockups](https://www.figma.com/design/GLbvWeRTKSNKtwXX20qjfQ/Mockups-Ride'N'Share?node-id=0-1&t=2fh6s3URZuUNrWaw-1)
 ---
 
 ## Notas Adicionales
