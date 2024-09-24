@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="12"
+    android:paddingLeft="28dp"
+    android:paddingRight="28dp"
+    android:paddingBottom="28dp"
+    android:paddingTop="0dp"
+    android:background="@color/background"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tituloBienvenidos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/londrina_solid_black"
+        android:text="Resgístrate"
+        android:textColor="@color/letras"
+        android:textSize="48sp"
+        android:gravity="center"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner_layout"
+        >
+
+
+        <TextView
+            android:id="@+id/textNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Nombre"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_alignParentTop="true"
+            />
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textNombre"
+            />
+
+        <TextView
+            android:id="@+id/textApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Apellido"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editNombre"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellido"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textApellido"
+            />
+
+        <TextView
+            android:id="@+id/textCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Ciudad"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editApellido"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ciudad"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textCiudad"
+            />
+
+        <TextView
+            android:id="@+id/textFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Fecha de nacimiento"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editCiudad"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha (dd/mm/yyyy)"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textFecha"
+            />
+
+        <TextView
+            android:id="@+id/textCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Correo"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editFecha"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textCorreo"
+            />
+
+        <TextView
+            android:id="@+id/textContrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Contrasenia"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editCorreo"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editContrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textContrasenia"
+            />
+
+        <Button
+            android:id="@+id/buttonRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_corner_button"
+            app:backgroundTint="@color/letras"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0"
+        />
+
+
+
+
+</LinearLayout>

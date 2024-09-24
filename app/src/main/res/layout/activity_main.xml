@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="28dp"
+    android:background="@color/background"
+    android:weightSum="8"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tituloBienvenidos"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:fontFamily="@font/londrina_solid_black"
+        android:text="BIENVENIDO RIDENSHARE"
+        android:textColor="@color/letras"
+        android:textSize="48sp"
+        android:gravity="center"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner_layout"
+        android:layout_below="@+id/tituloBienvenidos"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="50dp"
+        >
+
+        <TextView
+            android:id="@+id/textCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Correo"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_alignParentTop="true"
+            />
+
+        <EditText
+            android:id="@+id/editCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textCorreo"
+            />
+
+        <TextView
+            android:id="@+id/textContrasenia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/letras"
+            android:layout_below="@id/editCorreo"
+            />
+
+        <EditText
+            android:id="@+id/editContrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@id/textContrasenia"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            android:id="@+id/buttonIngresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingresar con huella"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_button"
+            app:backgroundTint="@color/letras"
+            android:textColor="@color/white"
+            android:layout_above="@+id/linkOlivdaste"
+            android:layout_marginBottom="12dp"
+            />
+
+        <TextView
+            android:id="@+id/linkOlivdaste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/olvidaste_contrasenia"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/letras"
+            android:textColorLink="@color/letras"
+            android:layout_above="@+id/linkRegistrarse"
+            android:layout_marginBottom="12dp"
+            />
+
+
+        <TextView
+            android:id="@+id/linkRegistrarse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registrarse"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/letras"
+            android:textColorLink="@color/letras"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>
