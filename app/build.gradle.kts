@@ -49,4 +49,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("androidx.biometric:biometric:1.1.0")
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
 }

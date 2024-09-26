@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setupBiometricLogin()
 
         binding.editCorreo.addTextChangedListener(object : TextWatcher{
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 return
             }
@@ -52,13 +54,38 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.buttonIngresar.setOnClickListener{
+
+            val extras = intent.extras
+            val user = extras?.getString("user") // Obtener el usuario
+            val password = extras?.getString("password") // Obtener la contraseña
+            val name = extras?.getString("name")
+            val surname = extras?.getString("surname")
+            val city = extras?.getString("city")
+            val date = extras?.getString("date")
+
             if (binding.editCorreo.text.toString() == ""){
                 authenticateUser()
             }
-            else if (binding.editCorreo.text.toString() == "user" && binding.editContrasenia.text.toString() == "password"){
+            else if ((binding.editCorreo.text.toString() == "user" && binding.editContrasenia.text.toString() == "password")){
                 val bundle = Bundle()
+                bundle.putString("name","Oscar")
+                bundle.putString("surname","Martinez")
+                bundle.putString("city","Bogota")
+                bundle.putString("date","01/01/2000")
                 bundle.putString("user", "user")
                 bundle.putString("password", "password")
+                val intent = Intent(this, FeedActivity::class.java)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+            else if (((binding.editCorreo.text.toString() == user && binding.editContrasenia.text.toString() == password))){
+                val bundle = Bundle()
+                bundle.putString("name",name)
+                bundle.putString("surname",surname)
+                bundle.putString("city",city)
+                bundle.putString("date",date)
+                bundle.putString("user", user)
+                bundle.putString("password", password)
                 val intent = Intent(this, FeedActivity::class.java)
                 intent.putExtras(bundle)
                 startActivity(intent)
