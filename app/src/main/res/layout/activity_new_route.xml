@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <!-- Título y botones superiores -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <!-- Espacio vacío para centrar el contenido -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:weightSum="10">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_menu_24"
+                android:background="@color/background" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:text="Crear Post"
+                android:gravity="center"
+                android:fontFamily="@font/londrina_solid_black"
+                android:textSize="28sp"
+                android:textColor="@color/letras" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_account_circle_24"
+                android:background="@color/background" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Botón para tomar foto -->
+    <Button
+        android:id="@+id/tomarFotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomar Foto"
+        android:layout_gravity="center"
+        android:textColor="@color/letras"
+        android:backgroundTint="@color/background" />
+
+    <!-- Mostrar imagen tomada -->
+    <ImageView
+        android:id="@+id/imageViewFoto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:background="@color/letras" />
+
+    <!-- Campo de texto para la descripción -->
+    <EditText
+        android:id="@+id/editTextDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:hint="Escribe una descripción..."
+        android:padding="16dp"
+        android:textColor="@color/letras"
+        android:textSize="16sp"
+        android:fontFamily="@font/londrina_solid_black"
+        android:backgroundTint="@color/background" />
+
+    <!-- Botón para publicar -->
+    <Button
+        android:id="@+id/publicarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:text="Publicar"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/letras"
+        android:backgroundTint="@color/background" />
+
+</LinearLayout>

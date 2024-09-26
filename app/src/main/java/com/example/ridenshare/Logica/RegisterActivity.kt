@@ -23,6 +23,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.buttonRegistrar.setOnClickListener{
             if (validarDatos()){
                 val bundle = Bundle()
+                bundle.putString("name",binding.editNombre.text.toString())
+                bundle.putString("surname",binding.editApellido.text.toString())
+                bundle.putString("date",binding.editFecha.text.toString())
+                bundle.putString("city",binding.editCiudad.text.toString())
                 bundle.putString("user", binding.editCorreo.text.toString())
                 bundle.putString("password", binding.editContrasenia.text.toString())
                 val intent = Intent(this, FeedActivity::class.java)
