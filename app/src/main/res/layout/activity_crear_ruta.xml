@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="28dp"
+    android:background="@color/background"
+    android:weightSum="8"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tituloBienvenidos"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:fontFamily="@font/londrina_solid_black"
+        android:text="Selecciona una opción para crear Ruta"
+        android:textColor="@color/letras"
+        android:textSize="48sp"
+        android:gravity="center"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/buttonTiempoReal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@color/letras"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="Crear en tiempo real"
+        />
+    <Button
+        android:id="@+id/buttonDesdeMapa"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@color/letras"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="Crear desde el mapa"
+        />
+
+
+
+
+</LinearLayout>

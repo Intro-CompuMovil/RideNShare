@@ -30,7 +30,8 @@
             android:gravity="center"
             android:fontFamily="@font/londrina_solid_black"
             android:textSize="28sp"
-            android:textColor="@color/letras" />
+            android:textColor="@color/letras"
+            />
 
         <ImageButton
             android:id="@+id/profileButton"
@@ -181,7 +182,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end|bottom"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        >
+
+
 
         <ImageButton
             android:id="@+id/MapButton"
@@ -199,4 +205,17 @@
             app:tint="@color/letras"
             app:srcCompat="@android:drawable/ic_menu_add" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/crearRuta"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Crear Ruta"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@color/letras"
+        />
+
 </LinearLayout>

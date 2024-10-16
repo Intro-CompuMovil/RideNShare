@@ -4,13 +4,12 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ridenshare.R
 
 class FeedActivity : AppCompatActivity() {
@@ -32,6 +31,7 @@ class FeedActivity : AppCompatActivity() {
         val back = findViewById<ImageButton>(R.id.backButton)
         val map = findViewById<ImageButton>(R.id.MapButton)
         val profile = findViewById<ImageButton>(R.id.profileButton)
+        val newRoute = findViewById<Button>(R.id.crearRuta)
 
         post.setOnClickListener {
             requestCamaraPermission()
@@ -84,6 +84,10 @@ class FeedActivity : AppCompatActivity() {
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
+        }
+
+        newRoute.setOnClickListener{
+            startActivity(Intent(this, CrearRutaActivity::class.java))
         }
     }
 
