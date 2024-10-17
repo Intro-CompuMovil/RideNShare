@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RideNSHare"
+        tools:targetApi="31" >
+        <activity
+            android:name=".Logica.MejoresRutas"
+            android:exported="false"
+            android:theme="@style/Theme.RideNSHare" />
+        <activity
+            android:name=".Logica.MapRouteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.RideNSHare" />
+        <activity
+            android:name=".Logica.RutaDesdeMapaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.RutaTiempoRealActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.CrearRutaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.myRoutes"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.profileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.mapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.newRoute"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.FeedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+    </application>
+
+</manifest>
