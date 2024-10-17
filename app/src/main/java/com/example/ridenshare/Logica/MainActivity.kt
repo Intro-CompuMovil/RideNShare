@@ -1,14 +1,12 @@
 package com.example.ridenshare.Logica
 
 import android.content.Intent
-import androidx.biometric.BiometricPrompt;
-import androidx.biometric.BiometricPrompt.PromptInfo;
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.example.ridenshare.databinding.ActivityMainBinding
 
@@ -23,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -142,6 +139,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun proceedToMainActivity() {
-        startActivity(Intent(this, FeedActivity::class.java))
+        val bundle = Bundle()
+        bundle.putString("name","name")//TODO: Change so that uses the first stored user in the DB (JSON)
+        bundle.putString("surname","surname")//TODO: Change so that uses the first stored user in the DB (JSON)
+        bundle.putString("city","city")//TODO: Change so that uses the first stored user in the DB (JSON)
+        bundle.putString("date","date")//TODO: Change so that uses the first stored user in the DB (JSON)
+        bundle.putString("user", "user")//TODO: Change so that uses the first stored user in the DB (JSON)
+        bundle.putString("password", "password")//TODO: Change so that uses the first stored user in the DB (JSON)
+        val intent = Intent(this, FeedActivity::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

@@ -10,7 +10,6 @@ class CrearRutaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCrearRutaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityCrearRutaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
