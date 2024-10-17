@@ -1,15 +1,16 @@
 package com.example.ridenshare.Logica
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.ridenshare.R
+import com.example.ridenshare.databinding.ActivityMyRoutesBinding
 
 class myRoutes : AppCompatActivity() {
+    private lateinit var binding: ActivityMyRoutesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_routes)
+        binding = ActivityMyRoutesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
     }
 }

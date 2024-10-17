@@ -1,10 +1,17 @@
 package com.example.ridenshare.Logica
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Geocoder
 import android.os.Bundle
 import android.os.StrictMode
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ridenshare.Data.DataTest
 import com.example.ridenshare.R
@@ -19,11 +26,15 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
+import org.osmdroid.views.overlay.TilesOverlay
 
 class RutaDesdeMapaActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRutaDesdeMapaBinding
     lateinit var roadManager: RoadManager
     val route = DataTest.Route("", mutableListOf())
+    private lateinit var sensorManager: SensorManager
+    private lateinit var lightSensor: Sensor
+    private lateinit var lightSensorListener: SensorEventListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRutaDesdeMapaBinding.inflate(layoutInflater)
@@ -48,7 +59,23 @@ class RutaDesdeMapaActivity : AppCompatActivity() {
         binding.button.setOnClickListener{
             route.titulo = binding.titleInput.text.toString()
             DataTest.routes.add(route)
+            Toast.makeText(this, "Ruta creada con éxito", Toast.LENGTH_SHORT).show()
             startActivity(Intent(baseContext, myRoutes::class.java))
+        }
+
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)!!
+        lightSensorListener = object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                Log.i("MAPldksaj", "Valor: ${event.values[0]}")
+                if (event.values[0] < 500) {
+                    binding.osmMap.overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERT_COLORS)
+
+                } else {
+                    binding.osmMap.overlayManager.tilesOverlay.setColorFilter(null)
+                }
+            }
+            override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
         }
     }
 
