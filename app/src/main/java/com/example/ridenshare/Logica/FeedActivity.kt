@@ -3,9 +3,12 @@ package com.example.ridenshare.Logica
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -30,9 +33,11 @@ class FeedActivity : AppCompatActivity() {
         val map = findViewById<ImageButton>(R.id.MapButton)
         val profile = findViewById<ImageButton>(R.id.profileButton)
         val newRoute = findViewById<Button>(R.id.crearRuta)
+        val buttonWeb = findViewById<ImageView>(R.id.storeButton)
 
-        post.setOnClickListener {
-            requestCamaraPermission()
+        buttonWeb.setOnClickListener {
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.decathlon.com.co/4783-ciclismo"))
+            startActivity(webIntent)
         }
 
         back.setOnClickListener {
