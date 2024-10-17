@@ -3,14 +3,15 @@ package com.example.ridenshare.Logica
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ridenshare.R
 
 class FeedActivity : AppCompatActivity() {
@@ -25,16 +26,18 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_feed)
 
         val post = findViewById<ImageButton>(R.id.agregarButton)
         val back = findViewById<ImageButton>(R.id.backButton)
         val map = findViewById<ImageButton>(R.id.MapButton)
         val profile = findViewById<ImageButton>(R.id.profileButton)
+        val newRoute = findViewById<Button>(R.id.crearRuta)
+        val buttonWeb = findViewById<ImageView>(R.id.storeButton)
 
-        post.setOnClickListener {
-            requestCamaraPermission()
+        buttonWeb.setOnClickListener {
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.decathlon.com.co/4783-ciclismo"))
+            startActivity(webIntent)
         }
 
         back.setOnClickListener {
@@ -84,6 +87,10 @@ class FeedActivity : AppCompatActivity() {
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
+        }
+
+        newRoute.setOnClickListener{
+            startActivity(Intent(this, CrearRutaActivity::class.java))
         }
     }
 
