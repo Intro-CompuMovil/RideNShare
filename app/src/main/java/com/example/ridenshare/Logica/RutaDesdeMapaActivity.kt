@@ -1,143 +1,85 @@
 package com.example.ridenshare.Logica
 
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.location.Geocoder
 import android.os.Bundle
-import android.os.StrictMode
-import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ridenshare.Data.DataTest
 import com.example.ridenshare.R
-import com.example.ridenshare.databinding.ActivityRutaDesdeMapaBinding
-import org.osmdroid.api.IMapController
-import org.osmdroid.bonuspack.routing.OSRMRoadManager
-import org.osmdroid.bonuspack.routing.RoadManager
-import org.osmdroid.config.Configuration
-import org.osmdroid.events.MapEventsReceiver
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.util.GeoPoint
-import org.osmdroid.views.overlay.MapEventsOverlay
-import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.Polyline
-import org.osmdroid.views.overlay.TilesOverlay
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
-class RutaDesdeMapaActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityRutaDesdeMapaBinding
-    lateinit var roadManager: RoadManager
-    val route = DataTest.Route("", mutableListOf())
-    private lateinit var sensorManager: SensorManager
-    private lateinit var lightSensor: Sensor
-    private lateinit var lightSensorListener: SensorEventListener
+class RutaDesdeMapaActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    private lateinit var map: GoogleMap
+    private val ruta = ArrayList<LatLng>()
+    private var distanciaTotal = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRutaDesdeMapaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_ruta_desde_mapa)
 
-        Configuration.getInstance().setUserAgentValue(applicationContext.packageName)
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-        binding.osmMap.setTileSource(TileSourceFactory.MAPNIK)
-        binding.osmMap.setMultiTouchControls(true)
-
-        roadManager = OSRMRoadManager(this, "ANDROID")
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-
-        binding.osmMap.overlays.add(createOverlayEvents())
-
-        val mapController: IMapController = binding.osmMap.controller
-        val bogotaCenter = GeoPoint(4.7110, -74.0721)
-        mapController.setCenter(bogotaCenter)
-        mapController.setZoom(13.0)
-
-        binding.button.setOnClickListener{
-            route.titulo = binding.titleInput.text.toString()
-            DataTest.routes.add(route)
-            Toast.makeText(this, "Ruta creada con éxito", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(baseContext, myRoutes::class.java))
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener{
+            guardarRuta("Ruta desde el Mapa", distanciaTotal, "1h 20m", ruta)
         }
+    }
 
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)!!
-        lightSensorListener = object : SensorEventListener {
-            override fun onSensorChanged(event: SensorEvent) {
-                Log.i("MAPldksaj", "Valor: ${event.values[0]}")
-                if (event.values[0] < 500) {
-                    binding.osmMap.overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERT_COLORS)
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        val ciudadLatLng = LatLng(4.62894444, -74.06485) // Punto inicial general
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(ciudadLatLng, 10f))
 
-                } else {
-                    binding.osmMap.overlayManager.tilesOverlay.setColorFilter(null)
-                }
+        map.setOnMapClickListener { latLng ->
+            // Agrega el marcador y el punto a la ruta
+            map.addMarker(MarkerOptions().position(latLng).title("Punto de la Ruta"))
+            if (ruta.isNotEmpty()) {
+                distanciaTotal += calcularDistancia(ruta.last(), latLng)
             }
-            override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
+            ruta.add(latLng)
+            mostrarRuta()
         }
     }
 
-    private fun createOverlayEvents(): MapEventsOverlay {
-        val overlayEventos = MapEventsOverlay(object : MapEventsReceiver {
-            override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
-                return false
-            }
-            override fun longPressHelper(p: GeoPoint): Boolean {
-                longPressOnMap(p)
-                return true
-            }
-        })
-        return overlayEventos
+    private fun mostrarRuta() {
+        val polylineOptions = PolylineOptions().clickable(false).addAll(ruta)
+        map.addPolyline(polylineOptions)
+        Toast.makeText(this, "Distancia Total: ${String.format("%.2f", distanciaTotal)} km", Toast.LENGTH_SHORT).show()
     }
 
-    private var longPressedMarker: Marker? = null
-    private fun longPressOnMap(p: GeoPoint) {
-        longPressedMarker = null
-        route.points.add(DataTest.Point(p.latitude, p.longitude))
-        longPressedMarker = createMarker(p, geoCoderSearchLatLang(p), null, R.drawable.baseline_adb_24)
-        longPressedMarker?.let {
-            binding.osmMap.overlays.add(it)
-            drawRoute()
-        }
+    private fun calcularDistancia(punto1: LatLng, punto2: LatLng): Double {
+        val resultado = FloatArray(1)
+        android.location.Location.distanceBetween(
+            punto1.latitude, punto1.longitude,
+            punto2.latitude, punto2.longitude,
+            resultado
+        )
+        return resultado[0] / 1000.0 // Devuelve la distancia en kilómetros
     }
 
-    private fun geoCoderSearchLatLang(latLng: GeoPoint): String? {
-        val mGeocoder = Geocoder(this)
-        return mGeocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)?.get(0)?.getAddressLine(0)
+    override fun onDestroy() {
+        super.onDestroy()
+        guardarRuta("Ruta desde el Mapa", distanciaTotal, "1h 20m", ruta)
     }
 
-    private fun createMarker(p: GeoPoint, title: String?, desc: String?, iconID: Int): Marker? {
-        var marker: Marker? = null
-        if (binding.osmMap != null) {
-            marker = Marker(binding.osmMap)
-            title?.let { marker.title = it }
-            desc?.let { marker.subDescription = it }
-            if (iconID != 0) {
-                val myIcon = resources.getDrawable(iconID, this.theme)
-                marker.icon = myIcon
-            }
-            marker.position = p
-            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+    private fun guardarRuta(nombre: String, distancia: Double, tiempo: String, puntos: List<LatLng>) {
+        val route = DataTest.Route("", mutableListOf())
+        for (point in puntos){
+            route.points.add(DataTest.Point(point.latitude, point.longitude))
         }
-        return marker
+        DataTest.routes.add(route)
+
+        Toast.makeText(this, "Ruta finalizada y guardada", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, CrearRutaActivity::class.java))
     }
 
-    private var roadOverlay: Polyline? = null
-    private fun drawRoute() {
-        val routePoints = ArrayList<GeoPoint>()
-        for (point in route.points) {
-            val geoPoint = GeoPoint(point.latitude, point.longitude)
-            routePoints.add(geoPoint)
-        }
-        val road = roadManager.getRoad(routePoints)
-        if (binding.osmMap != null) {
-            roadOverlay?.let { binding.osmMap.overlays.remove(it) }
-            roadOverlay = RoadManager.buildRoadOverlay(road)
-            roadOverlay?.outlinePaint?.color = Color.RED
-            roadOverlay?.outlinePaint?.strokeWidth = 10f
-            binding.osmMap.overlays.add(roadOverlay)
-        }
-    }
 }
