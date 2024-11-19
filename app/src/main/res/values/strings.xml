@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RideNSHare</string>
+    <string name="olvidaste_contrasenia"><a href="">Olivdaste tu contraseña?</a></string>
+    <string name="registrarse"><a href="">No tienes cuenta? Regístrate</a></string>
+</resources>
