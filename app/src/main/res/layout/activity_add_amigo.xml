@@ -17,11 +17,11 @@
 
     <TextView
         android:id="@+id/tituloBienvenidos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:fontFamily="@font/londrina_solid_black"
-        android:text="BIENVENIDO RIDENSHARE"
+        android:text="Añadir amigo"
         android:textColor="@color/letras"
         android:textSize="48sp"
         android:gravity="center"
@@ -32,7 +32,7 @@
         android:id="@+id/layoutLogin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="4"
         android:orientation="vertical"
         android:background="@drawable/rounded_corner_layout"
         android:layout_below="@+id/tituloBienvenidos"
@@ -44,6 +44,32 @@
         >
 
         <TextView
+            android:id="@+id/textAlias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Alias"
+            android:textSize="16sp"
+            android:textColor="@color/letras"
+            android:layout_alignParentTop="true"
+            />
+
+        <EditText
+            android:id="@+id/editAlias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alias"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_corner_layout"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/letras"
+            android:textColorHint="@color/letras"
+            android:layout_below="@+id/textAlias"
+            />
+
+        <TextView
             android:id="@+id/textCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +77,8 @@
             android:text="Correo"
             android:textSize="16sp"
             android:textColor="@color/letras"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/editAlias"
+            android:layout_marginTop="20dp"
             />
 
         <EditText
@@ -69,58 +96,22 @@
             android:layout_below="@+id/textCorreo"
             />
 
-        <TextView
-            android:id="@+id/textContrasenia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/letras"
-            android:layout_below="@id/editCorreo"
-            />
 
-        <EditText
-            android:id="@+id/editContrasenia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:textSize="16sp"
-            android:background="@drawable/rounded_corner_layout"
-            android:fontFamily="@font/roboto"
-            android:padding="8dp"
-            android:layout_marginTop="12dp"
-            android:textColor="@color/letras"
-            android:textColorHint="@color/letras"
-            android:layout_below="@id/textContrasenia"
-            android:inputType="textPassword"
-            />
 
         <Button
-            android:id="@+id/buttonIngresar"
+            android:id="@+id/buttonAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresar con huella"
-            android:layout_marginTop="10dp"
+            android:text="Añadir amigo"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_corner_button"
             app:backgroundTint="@color/letras"
             android:textColor="@color/white"
-            android:layout_above="@+id/linkRegistrarse"
-            android:layout_marginBottom="12dp"
-            />
 
-
-        <TextView
-            android:id="@+id/linkRegistrarse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/registrarse"
-            android:layout_marginTop="12dp"
-            android:textColor="@color/letras"
-            android:textColorLink="@color/letras"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="20dp"
             />
+
 
     </RelativeLayout>
 

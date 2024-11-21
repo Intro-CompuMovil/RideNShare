@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/rutaNameTextView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:id="@+id/tryItButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        app:tint="@color/letras"
+        app:srcCompat="@drawable/try_it_baseline_30"
+        android:scaleType="fitXY"
+        android:layout_marginRight="10dp"
+        />
+
+    <ImageButton
+        android:id="@+id/commentsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        app:tint="@color/letras"
+        app:srcCompat="@drawable/all_coments_baseline_30"
+        android:scaleType="fitXY"
+        android:layout_marginRight="10dp"
+        />
+
+    <ImageButton
+        android:id="@+id/addCommentButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        app:tint="@color/letras"
+        app:srcCompat="@drawable/write_baseline_30"
+        android:scaleType="fitXY" />
+
+
+
+
+
+</LinearLayout>

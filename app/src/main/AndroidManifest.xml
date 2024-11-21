@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +25,64 @@
         android:theme="@style/Theme.RidenShare"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Logica.TryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.TodasRutasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.MisRutasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.CrearRutaTiempoRealActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.CrearRutaDesdeMapaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.OpcionesRutaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.GoToAmigoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.AddAmigoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.AmigosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.MapsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.CrearPublicacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.ProductosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.TipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.PublicacionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.MyRoutesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.FeedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logica.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +90,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Logica.PublicacionesActivity"
+    android:background="@color/background"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mis rutas"
+        android:textSize="40sp"
+        android:fontFamily="@font/londrina_solid_black"
+        android:textColor="@color/letras"
+        android:gravity="center_horizontal"
+        />
+
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:id="@+id/rutasListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/title"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomPopupMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/background</item>
+    </style>
+    <style name="CustomMenuTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textColor">@color/letras</item>
+        <item name="android:textSize">32sp</item>
+        <item name="fontFamily">@font/londrina_solid_black</item>
+        <item name="android:popupBackground">@color/background</item>
+    </style>
+
+</resources>

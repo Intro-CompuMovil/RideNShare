@@ -2,4 +2,6 @@
     <string name="app_name">RideNSHare</string>
     <string name="olvidaste_contrasenia"><a href="">Olivdaste tu contraseña?</a></string>
     <string name="registrarse"><a href="">No tienes cuenta? Regístrate</a></string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
 </resources>
